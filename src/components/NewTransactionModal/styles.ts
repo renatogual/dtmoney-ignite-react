@@ -44,40 +44,51 @@ export const Container = styled.form`
       filter: brightness(0.9);
     }
   }
-`
+`;
 
 export const TransactionTypeContainer = styled.div`
   margin: 1rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
+`;
 
-  button {
-    height: 4rem;
-    border: 1px solid #d7d7d7;
-    border-radius: 0.25rem;
-    background: transparent;
+interface RadioBoxProps {
+  isActive: boolean;
+  activeColor: "green" | "red";
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+const colors = {
+  green: "rgb(51, 204, 149, 0.2)",
+  red: "rgb(229, 46, 77, 0.2)",
+};
 
-    transition: border-color 0.2s;
+export const RadioBox = styled.button<RadioBoxProps>`
+  height: 4rem;
+  border: 1px solid #d7d7d7;
+  border-radius: 0.25rem;
 
-    &:hover {
-      border-color: #aaa;
-    }
+  background: ${(props) => (props.isActive ? colors[props.activeColor] : "")};
 
-    img {
-      width: 20px;
-      height: 20px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    span {
-      display: inline-block;
-      margin-left: 1rem;
-      font-size: 1rem;
-      color: var(--text-title);
-    }
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: #aaa;
   }
-`
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    display: inline-block;
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: var(--text-title);
+  }
+`;

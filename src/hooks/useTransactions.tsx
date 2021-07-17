@@ -14,7 +14,7 @@ type TransactionForm = Omit<Transaction, "id" | "createdAt">;
 
 interface TransactionContextData {
   transactions: Transaction[];
-  createTransaction: (transaction: TransactionForm) => void;
+  createTransaction: (transaction: TransactionForm) => Promise<void>;
 }
 
 interface TransactionProviderProps {

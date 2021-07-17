@@ -34,8 +34,15 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
       .then((res) => setTransactions(res.data.transactions));
   }, []);
 
-  function createTransaction(transaction: TransactionForm) {
-    api.post("transactions", transaction);
+  async function createTransaction(transactionFormValues: TransactionForm) {
+    const { data } = await api.post("transactions", {
+      ...transactionFormValues,
+      createdAt: new Date(),
+    });
+
+    const { transaction } = data;
+
+    setTransactions([...transactions, transaction]);
   }
 
   return (
